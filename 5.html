@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#contain{
+			position: relative;
+		}
+		.box{
+			padding: 5px;
+			float: left;
+		}
+		.imgbox{
+			padding: 5px;
+			box-shadow: 0 0 5px #ccc;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+		}
+		.imgbox img{
+			width: 240px;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="contain">
+		<div class="box">
+			<div class="imgbox">
+				<img src="./0.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./1.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./2.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./3.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./4.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./5.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./6.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./7.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./8.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./9.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./10.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./11.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./12.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./13.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./14.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./15.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./16.jpg" alt="1">
+			</div>
+		</div>
+		<div class="box">
+			<div class="imgbox">
+				<img src="./17.jpg" alt="1">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	//页面加载完毕之后执行操作
+	window.onload = function(){
+		waterFlew('contain','box');
+	};
+
+	//瀑布流实现函数
+	function waterFlew(parent,child){
+		//获取父级元素
+		var parent = document.getElementById(parent);
+		//获取box元素
+		var aBox = parent.getElementsByClassName(child);
+		//获取屏幕宽度
+		var screenW = document.documentElement.clientWidth;
+		//获取box的宽度
+		var eleW = aBox[0].offsetWidth;
+		//计算每行能容纳的最大数量
+		var num = Math.floor(screenW/eleW);
+		//设置父元素的宽度
+		parent.style.cssText = 'width:'+num*eleW+'px;margin:0 auto';
+		//设置每个图片的位置
+		var minH = getPosition(aBox,num);
+	};
+
+	//图片摆放位置函数
+	function getPosition(aBox,num){
+		//第一行不用调位置，但第二行要根据第一行的所有图片高度进行位置调整
+		//新建一个数组,用于存放第一行图片的高度
+		var picH = [];
+		//遍历所有子元素
+		for (var i = 0; i < aBox.length; i++) {
+			//如果图片在第一行
+			if (i<num) {
+				// 把图片的高度存到高度数组中
+				picH[i] = aBox[i].offsetHeight;
+			}else{
+				//其余图片根据第一行位置摆放
+				//获取最小高度值
+				var posMinHeight = Math.min.apply(null,picH);
+				//获取最小高度图片的索引
+				var index = getIndex(picH,posMinHeight);
+				//设置其他图片的摆放位置
+				aBox[i].style.position = 'absolute';
+				aBox[i].style.left = aBox[index].offsetLeft+'px';
+				aBox[i].style.top = posMinHeight+'px';
+				//把放置后的高度加入到最小高度上
+				picH[index] += posMinHeight;
+			}
+		}
+	};
+
+	//获取最小高度索引函数
+	function getIndex(picH,posMinHeight){
+		for (var i = 0; i < picH.length; i++) {
+			if (picH[i]==posMinHeight) {
+				return i;
+			}
+		}
+	};
+
+</script>
