@@ -1,50 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>瀑布流</title>
-    <style>
-        #container {
-            /*chrome safri*/
-            /*列数*/
-            -webkit-column-count:5;
-            /*每列间隔*/
-            -webkit-column-gap:10px;
-            /*间隔边线大小*/
-            -webkit-column-rule:1px solid #333;
-            /*每列宽度*/
-            -webkit-column-width:100px;
-
-            /*firefox*/
-            /*-moz-column-count:5;
-            -moz-column-gap:20px;
-            -moz-column-rule:5px solid #333;
-            -moz-column-width:210px;*/
-
-            /*IE*/
-            /*-ms-column-count:5;
-            -ms-column-gap:10px;
-            -ms-column-rule:5px solid #333;
-            -ms-column-width:210px;*/
-        } 
-    </style>
+  <meta charset="UTF-8">
+  <title>多列布局</title>
+  <style>
+    #container {
+      column-count: 5;                  // 需要分几列
+      column-gap: 0;                    // 列与列间的间隙
+      column-rule:1px solid lightblue;  // 列边框
+      column-span: all;                 // 指定元素跨越多少列
+      column-width: auto;               // 指定列的宽度
+    }
+  </style>
 </head>
 <body>
-    <div id="container">
-        <img src="../BOMDOM/image/0.jpg" alt="1">
-        <img src="../BOMDOM/image/1.jpg" alt="1">
-        <img src="../BOMDOM/image/2.jpg" alt="1">
-        <img src="../BOMDOM/image/3.jpg" alt="1">
-        <img src="../BOMDOM/image/4.jpg" alt="1">
-        <img src="../BOMDOM/image/5.jpg" alt="1">
-        <img src="../BOMDOM/image/6.jpg" alt="1">
-        <img src="../BOMDOM/image/7.jpg" alt="1">
-        <img src="../BOMDOM/image/8.jpg" alt="1">
-        <img src="../BOMDOM/image/9.jpg" alt="1">
-        <img src="../BOMDOM/image/10.jpg" alt="1">
-        <img src="../BOMDOM/image/11.jpg" alt="1">
-        <img src="../BOMDOM/image/12.jpg" alt="1">
-        <img src="../BOMDOM/image/13.jpg" alt="1">
-    </div>
+  <div id="container">
+    <img src="./imgs/0.jpg" alt="1">
+    <img src="./imgs/1.jpg" alt="1">
+    <img src="./imgs/2.jpg" alt="1">
+    <img src="./imgs/3.jpg" alt="1">
+    <img src="./imgs/4.jpg" alt="1">
+    <img src="./imgs/5.jpg" alt="1">
+    <img src="./imgs/6.jpg" alt="1">
+    <img src="./imgs/7.jpg" alt="1">
+    <img src="./imgs/8.jpg" alt="1">
+    <img src="./imgs/9.jpg" alt="1">
+    <img src="./imgs/10.jpg" alt="1">
+    <img src="./imgs/11.jpg" alt="1">
+    <img src="./imgs/12.jpg" alt="1">
+    <img src="./imgs/13.jpg" alt="1">
+  </div>
 </body>
 </html>
